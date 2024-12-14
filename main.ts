@@ -1,0 +1,36 @@
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    bubble.tossBubble()
+    bubble.load_bubble()
+})
+controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
+    bubble.tilt_angle(bubble.Choice.Right)
+})
+scene.onHitWall(SpriteKind.Bubble, function (sprite, location) {
+    bubble.stick_to_wall(sprite, location)
+})
+controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
+    bubble.tilt_angle(bubble.Choice.Left)
+})
+bubble.createBoard()
+bubble.load_bubble()
+let mySprite = sprites.create(img`
+    ........eeeeeeeeeeeeeeee.......
+    .......e222222222222eeeee......
+    .......eeeddddffeeffffeee....e.
+    eee...eeeee111ffee1ff1eee...e2e
+    eee2..eeeee22222222222222ecee2e
+    e222e.eee22cdc111111111c22ce22e
+    eee21.eee2ccdcdd11111dddc2ee22.
+    eee11.eee2cd111111111111c2ed2c.
+    .dddddd1eee22222222222221cc1c..
+    .d1111111dcd111eeeec111c11c1...
+    ..d1111ccddccccdeedcccc11111...
+    ...dd1ccdd11111eeee1111111c....
+    .....11ccbbbbbbeeeebbbbbbbc....
+    ......cccbbbbbbceccbbbbbbb.....
+    .....ccccccccccbcccccccccc.....
+    .....ccccbbbbbbccccbbbbbbb.....
+    .....cccccccccccfcccccccccc....
+    ...............................
+    `, SpriteKind.Player)
+mySprite.top = 102
